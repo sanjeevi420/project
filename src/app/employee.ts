@@ -1,5 +1,5 @@
 export class Employee {
-    empid:any;
+    empid:number | undefined;
     empname:any;
     emailid:any;
     phno:any;

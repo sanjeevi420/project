@@ -8,17 +8,12 @@ import { Router } from "@angular/router"
 })
 export class EmployeeListComponent implements OnInit {
   employees:any = {};
+  deleteMessage=false;
   constructor( private employeeservice: ServiceService, private router:Router ) { }
 
   ngOnInit(): void {
     this.getEmployee();
   }
- /* getEmployee(){
-    this.employeeservice.getEmployeeList().subscribe(data =>{
-      this.employees=data;
-      console.log(data)
-    });
-  }*/
   
   getEmployee(){
     this.employeeservice.getEmployeeList().subscribe(
@@ -32,12 +27,15 @@ export class EmployeeListComponent implements OnInit {
     this.router.navigate(['update-employee', id])
   }
   deleteEmployee(id:any){
-    for(let i=0; i< this.employees.length;i++){
-      if(this.employees[i].id){
-        this.employees.splice(i,1)
-      }
-    }
-    this.employeeservice.deleteEmployee(id);
-    this.getEmployee();
+    console.log(id);
+    this.employeeservice.deleteEmployee(id).subscribe(
+      data => {
+        console.log(data);
+        this.deleteMessage=true;
+        this.employeeservice.getEmployeeList().subscribe(
+          (result) => {
+            this.employees = result;
+          })
+      });
   }
 }

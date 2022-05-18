@@ -17,7 +17,6 @@ export class CreateEmployeeComponent implements OnInit {
   @ViewChild('f') form :any;
 
   ngOnInit(){
-    this.onSubmit();
   }
 
   onSubmit(){

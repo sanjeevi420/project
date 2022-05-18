@@ -18,8 +18,8 @@
             <th>Action</th>
         </tr>
     </thead>
-    <tbody>
-        <nav *ngIf="employees.length>0">
+    <tbody *ngIf="employees.length>0">
+
         <tr *ngFor="let emp of employees">
             <td>{{emp.empid}}</td>
             <td>{{emp.empname}}</td>
@@ -32,11 +32,11 @@
             <td>{{emp.unit}}</td>
             <td>{{emp.projectcode}}</td>
             <td>
-                <button class="btn btn-primary " (click)="updateEmployee(emp.id)" > Update </button>
-                <button class="btn btn-danger" (click)="deleteEmployee(emp.id)" style="margin-left: 10px;"> Delete </button>
+                <button class="btn btn-primary " (click)="updateEmployee(emp.empid)" > Update </button>
+                <button class="btn btn-danger" (click)="deleteEmployee(emp.empid)" style="margin-left: 10px;"> Delete </button>
                 
             </td>
         </tr>
-    </nav>
+
     </tbody>
 </table>
