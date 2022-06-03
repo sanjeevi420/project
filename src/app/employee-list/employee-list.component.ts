@@ -85,8 +85,13 @@ export class EmployeeListComponent implements OnInit {
   }
 
   submitExcel(){
-    this.employeeservice.uploadExcel(this.file).subscribe( data =>{
-     alert("Uploaded successfully");
-    })
+    const ex=this.file.name.split('.');
+    if(ex[1]=="xlsx"){
+      this.employeeservice.uploadExcel(this.file).subscribe( data =>{
+      alert("Uploaded Excel File successfully");
+   })
+    }else{
+      alert("Its not a Excel file"+" "+"File type is"+" "+ex[1]);
+    }
   }
 }
